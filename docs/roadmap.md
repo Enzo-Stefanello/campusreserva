@@ -3,18 +3,20 @@
 > Planejamento incremental para um **MVP acadêmico de portfólio**. Uma etapa só estará concluída após verificação de seus critérios de aceite.  
 > Referências: [requisitos](./requisitos.md), [RN-01 a RN-20](./regras-de-negocio.md) e [arquitetura](./arquitetura.md).
 
-## Fase 0 — Fundação e planejamento (em andamento)
+## Fase 0 — Fundação e planejamento (concluída)
 
 - [x] Definir visão e posicionamento acadêmico do produto.
 - [x] Criar documentação inicial do repositório.
 - [x] Revisar e consolidar RN-01 a RN-20 como linha de base funcional do MVP.
 - [x] Atualizar os requisitos funcionais e separar casos de borda não aprovados.
 - [x] Alinhar a proposta de arquitetura e a sequência do roadmap às regras publicadas.
-- [ ] Verificar e selecionar versões compatíveis da stack, ferramentas e ambiente.
+- [x] Selecionar a stack e verificar as ferramentas no Windows 11: Java 25, Maven 3.9.16, WSL 2, Docker/Compose, PostgreSQL 18.6, Git, Node.js/npm e VS Code.
+- [x] Validar o PostgreSQL 18.6 em contêiner (healthcheck e consulta SQL por `psql`) e clonar o repositório na branch `main` com árvore de trabalho limpa.
+- [x] Confirmar a presença de `arquitetura.md`, `regras-de-negocio.md`, `requisitos.md` e `roadmap.md` na cópia local.
 - [x] Registrar escolhas técnicas iniciais: Java 25 LTS, Spring Boot 4.1.2, PostgreSQL 18.6, Maven 3.9.x com Wrapper e autenticação por sessão HTTP com proteção CSRF.
-- [ ] Confirmar configurações concretas e testes da autenticação quando a Fase 1 começar.
+- [x] Documentar que o projeto ainda não possui backend ou frontend executável; testes de autenticação, integrações e concorrência ficam para as fases de implementação.
 
-**Entrega:** baseline funcional aprovada, arquitetura conceitual, backlog incremental e stack validada.
+**Entrega da Fase 0:** baseline funcional aprovada, arquitetura conceitual e roadmap documentados, stack escolhida e ferramentas locais verificadas. **Não foram realizados build do Spring Boot, testes da aplicação ou integração Spring Boot ↔ PostgreSQL.** O Maven Wrapper, as dependências do projeto e a autenticação serão implementados na Fase 1.
 
 ## Fase 1 — Backend inicial, banco e acesso seguro
 
