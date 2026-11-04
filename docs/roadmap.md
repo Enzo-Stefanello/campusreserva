@@ -1,68 +1,97 @@
 # Roadmap do CampusReserva
 
-O desenvolvimento será incremental. Uma etapa só será marcada como concluída quando seus critérios forem verificados.
+> Planejamento incremental para um **MVP acadêmico de portfólio**. Uma etapa só estará concluída após verificação de seus critérios de aceite.  
+> Referências: [requisitos](./requisitos.md), [RN-01 a RN-20](./regras-de-negocio.md) e [arquitetura](./arquitetura.md).
 
-## Fase 0 — Fundação (em andamento)
+## Fase 0 — Fundação e planejamento (em andamento)
 
-- [x] Definir visão e posicionamento do produto.
-- [x] Criar documentos iniciais do projeto.
-- [ ] Revisar e aprovar as regras do MVP.
-- [ ] Confirmar ferramentas e versões para o ambiente de desenvolvimento.
+- [x] Definir visão e posicionamento acadêmico do produto.
+- [x] Criar documentação inicial do repositório.
+- [x] Revisar e consolidar RN-01 a RN-20 como linha de base funcional do MVP.
+- [x] Atualizar os requisitos funcionais e separar casos de borda não aprovados.
+- [x] Alinhar a proposta de arquitetura e a sequência do roadmap às regras publicadas.
+- [ ] Verificar e selecionar versões compatíveis da stack, ferramentas e ambiente.
+- [ ] Registrar escolhas técnicas iniciais indispensáveis para começar (especialmente estratégia de autenticação).
 
-**Entrega:** requisitos e arquitetura iniciais revisados, backlog priorizado.
+**Entrega:** baseline funcional aprovada, arquitetura conceitual, backlog incremental e stack validada.
 
-## Fase 1 — Base técnica
+## Fase 1 — Backend inicial, banco e acesso seguro
 
-- [ ] Criar aplicação Spring Boot.
-- [ ] Configurar PostgreSQL no ambiente local.
-- [ ] Configurar migrações com Flyway.
-- [ ] Criar endpoint de verificação de saúde.
-- [ ] Adicionar instruções de execução.
+- [ ] Criar a aplicação Spring Boot com versões verificadas.
+- [ ] Preparar PostgreSQL local (preferencialmente com Docker Compose) e Flyway.
+- [ ] Configurar validação de entradas e tratamento padronizado de erros.
+- [ ] Criar endpoint simples de saúde e instruções de execução.
+- [ ] Implementar cadastro e autenticação mínimos com Spring Security.
+- [ ] Estabelecer perfis \`ESTUDANTE\`, \`PROFESSOR\`, \`ADMINISTRADOR\`, proibir autoatribuição privilegiada e definir inicialização segura do primeiro administrador.
+- [ ] Testar autenticação, autorização básica, persistência e migrações.
 
-**Entrega:** backend inicial executando localmente e conectado ao banco.
+**Aceite:** backend inicia localmente; banco e migrações funcionam; autenticação e rotas protegidas são testadas; credenciais não são versionadas.
 
-## Fase 2 — Recursos
+## Fase 2 — Recursos e disponibilidade básica
 
-- [ ] Modelar entidade de recurso.
-- [ ] Implementar cadastro e listagem de recursos.
-- [ ] Validar entradas e padronizar respostas de erro.
-- [ ] Criar testes da funcionalidade.
+- [ ] Modelar laboratórios e equipamentos físicos individualizados.
+- [ ] Implementar listagem, cadastro, atualização e desativação controlada de recursos.
+- [ ] Implementar grade acadêmica de laboratórios e horários de equipamentos.
+- [ ] Expor consulta inicial de disponibilidade com validação no servidor.
+- [ ] Adicionar manutenção por tempo indeterminado com liberação administrativa.
+- [ ] Testar cadastro, identificação única, horários e autorização administrativa.
 
-**Entrega:** recursos persistidos e consultáveis pela API.
+**Aceite:** recursos são persistidos e consultados; equipamentos distintos permanecem independentes; manutenção bloqueia novas reservas; operações administrativas são protegidas.
 
-## Fase 3 — Reservas
+**Antes do fluxo de desativação com reservas futuras:** resolver o caso de borda documentado nas RN.
 
-- [ ] Modelar entidade de reserva.
-- [ ] Implementar criação e consulta de reservas.
-- [ ] Validar períodos e impedir sobreposição.
-- [ ] Testar concorrência entre solicitações simultâneas.
-- [ ] Implementar cancelamento conforme regras aprovadas.
+## Fase 3 — Reservas e cancelamentos
 
-**Entrega:** fluxo de reserva com integridade dos dados verificada.
+- [ ] Criar reserva de laboratório com blocos de 45 ou 90 minutos e cota de professor.
+- [ ] Criar reserva de equipamento com duração, início e antecedências aprovadas.
+- [ ] Aplicar confirmação imediata, disponibilidade transacional e proteção contra conflitos.
+- [ ] Aplicar cotas independentes e permitir equipamentos diferentes no mesmo horário.
+- [ ] Implementar consulta de reservas próprias e cancelamento nas condições da RN-10.
+- [ ] Testar limites temporais, horários, perfis, conflito e requisições concorrentes.
 
-## Fase 4 — Segurança
+**Aceite:** reserva válida confirma; reserva inválida retorna erro compreensível; conflito e cota não são violados por concorrência; cancelamentos liberam horário corretamente.
 
-- [ ] Implementar autenticação.
-- [ ] Definir e aplicar permissões de usuário e administrador.
-- [ ] Testar tentativas de acesso não autorizado.
+## Fase 4 — Empréstimos físicos e exceções administrativas
 
-**Entrega:** operações protegidas conforme o perfil do usuário.
+- [ ] Implementar retirada e devolução registradas exclusivamente por administrador.
+- [ ] Aplicar tolerância de 15 minutos, expiração por não retirada e bloqueio por atraso.
+- [ ] Registrar impedimentos históricos na janela de retirada e encaminhamento a \`EM_ANALISE\`.
+- [ ] Implementar encerramentos \`NAO_ATENDIDA\` e \`ANALISE_INCONCLUSIVA\`, com autoria e justificativa.
+- [ ] Preservar distinção entre bloqueio de reserva, disponibilidade física e cota.
+- [ ] Implementar retificações administrativas permitidas, com histórico antes/depois.
+- [ ] Testar transições válidas/inválidas, concorrência, manutenção, expiração e retificações.
 
-## Fase 5 — Interface
+**Aceite:** movimentações alteram estados corretamente; não há falso não comparecimento diante de impedimento conhecido; usuários com empréstimos atrasados sofrem as restrições previstas; histórico é rastreável.
 
-- [ ] Inicializar React + TypeScript.
-- [ ] Criar telas de listagem e disponibilidade.
-- [ ] Implementar fluxo de reserva e histórico.
-- [ ] Integrar estados de carregamento, sucesso e erro.
+**Antes dos casos de borda:** decidir movimentações retrospectivas/fora do expediente, margem entre empréstimos consecutivos e cancelamentos administrativos após início.
 
-**Entrega:** fluxo principal utilizável no navegador.
+## Fase 5 — Frontend e experiência de uso
 
-## Fase 6 — Entrega de portfólio
+- [ ] Inicializar React, TypeScript e Vite com versões verificadas.
+- [ ] Implementar autenticação, listagem e disponibilidade.
+- [ ] Implementar criação, consulta e cancelamento de reservas.
+- [ ] Criar interface administrativa mínima para recursos, manutenção, retirada/devolução e análise.
+- [ ] Tratar carregamento, sucesso, validação, conflito, acesso negado e estados de reserva.
+- [ ] Validar os fluxos integrados mais importantes.
 
-- [ ] Consolidar testes e CI.
-- [ ] Revisar segurança e configuração de ambientes.
-- [ ] Publicar instruções reproduzíveis e capturas de tela reais.
-- [ ] Avaliar e implementar deploy demonstrável.
-- [ ] Revisar documentação técnica e apresentação profissional.
+**Aceite:** estudante, professor e administrador conseguem realizar seus fluxos autorizados no navegador; ações proibidas são negadas pelo backend.
 
-**Entrega:** versão demonstrável, testada e documentada.
+## Fase 6 — Qualidade e entrega de portfólio
+
+- [ ] Consolidar testes unitários, integração com PostgreSQL e cenários concorrentes.
+- [ ] Configurar GitHub Actions para executar testes reais; não marcar CI como validada quando apenas compila sem testes.
+- [ ] Revisar segurança, variáveis de ambiente, mensagens de erro e migrações.
+- [ ] Gerar documentação OpenAPI e instruções reproduzíveis.
+- [ ] Registrar exemplos de uso e capturas de tela **reais**.
+- [ ] Avaliar deploy demonstrável, considerando custo e simplicidade.
+- [ ] Revisar README e documentação final, distinguindo implementado de planejado.
+
+**Aceite:** aplicação demonstrável, fluxos testados, documentação coerente com o código e configuração reproduzível.
+
+## Método de execução
+
+1. Trabalhar em **incrementos pequenos e verificáveis**, com objetivo e critério de aceite antes de escrever código.
+2. Validar as versões e dependências antes de incluí-las no projeto.
+3. Explicar e registrar consequências de mudanças relevantes em código, dependências ou configurações.
+4. Não presumir execução ou sucesso de funcionalidades que ainda não foram testadas.
+5. Não avançar automaticamente entre etapas sem alinhamento.
