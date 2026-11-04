@@ -1,0 +1,29 @@
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Java / Maven / Gradle
+**/target/
+**/build/
+.gradle/
+*.class
+
+# Node / Vite
+**/node_modules/
+**/dist/
+**/.vite/
+**/coverage/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Temporary files
+*.log
+*.tmp
