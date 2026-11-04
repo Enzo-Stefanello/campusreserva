@@ -11,7 +11,8 @@
 - [x] Atualizar os requisitos funcionais e separar casos de borda não aprovados.
 - [x] Alinhar a proposta de arquitetura e a sequência do roadmap às regras publicadas.
 - [ ] Verificar e selecionar versões compatíveis da stack, ferramentas e ambiente.
-- [ ] Registrar escolhas técnicas iniciais indispensáveis para começar (especialmente estratégia de autenticação).
+- [x] Registrar escolhas técnicas iniciais: Java 25 LTS, Spring Boot 4.1.2, PostgreSQL 18.6, Maven 3.9.x com Wrapper e autenticação por sessão HTTP com proteção CSRF.
+- [ ] Confirmar configurações concretas e testes da autenticação quando a Fase 1 começar.
 
 **Entrega:** baseline funcional aprovada, arquitetura conceitual, backlog incremental e stack validada.
 
@@ -21,8 +22,9 @@
 - [ ] Preparar PostgreSQL local (preferencialmente com Docker Compose) e Flyway.
 - [ ] Configurar validação de entradas e tratamento padronizado de erros.
 - [ ] Criar endpoint simples de saúde e instruções de execução.
-- [ ] Implementar cadastro e autenticação mínimos com Spring Security.
-- [ ] Estabelecer perfis \`ESTUDANTE\`, \`PROFESSOR\`, \`ADMINISTRADOR\`, proibir autoatribuição privilegiada e definir inicialização segura do primeiro administrador.
+- [ ] Implementar cadastro e autenticação mínimos com Spring Security por sessões HTTP, logout com invalidação e proteção CSRF.
+- [ ] Verificar cookies seguros, integração React/API na mesma origem quando aplicável e tratamento de sessões expiradas.
+- [ ] Estabelecer perfis `ESTUDANTE`, `PROFESSOR`, `ADMINISTRADOR`, proibir autoatribuição privilegiada e definir inicialização segura do primeiro administrador.
 - [ ] Testar autenticação, autorização básica, persistência e migrações.
 
 **Aceite:** backend inicia localmente; banco e migrações funcionam; autenticação e rotas protegidas são testadas; credenciais não são versionadas.
@@ -55,8 +57,8 @@
 
 - [ ] Implementar retirada e devolução registradas exclusivamente por administrador.
 - [ ] Aplicar tolerância de 15 minutos, expiração por não retirada e bloqueio por atraso.
-- [ ] Registrar impedimentos históricos na janela de retirada e encaminhamento a \`EM_ANALISE\`.
-- [ ] Implementar encerramentos \`NAO_ATENDIDA\` e \`ANALISE_INCONCLUSIVA\`, com autoria e justificativa.
+- [ ] Registrar impedimentos históricos na janela de retirada e encaminhamento a `EM_ANALISE`.
+- [ ] Implementar encerramentos `NAO_ATENDIDA` e `ANALISE_INCONCLUSIVA`, com autoria e justificativa.
 - [ ] Preservar distinção entre bloqueio de reserva, disponibilidade física e cota.
 - [ ] Implementar retificações administrativas permitidas, com histórico antes/depois.
 - [ ] Testar transições válidas/inválidas, concorrência, manutenção, expiração e retificações.
