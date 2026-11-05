@@ -91,10 +91,10 @@ O fechamento funcional das RN-01 a RN-20 não resolve automaticamente todos os c
 3. Registro de movimentações físicas fora do expediente e lançamentos retrospectivos.
 4. Necessidade ou não de intervalo operacional entre empréstimos consecutivos.
 
-A estratégia de transações, esquema definitivo de dados, mecanismo de autenticação, processamento de expirações e representação técnica de instantes serão escolhidos e testados durante o projeto técnico, não considerados funcionalidades já existentes.
+A estratégia de transações, esquema definitivo de dados, processamento de expirações e representação técnica de instantes serão escolhidos e testados durante o projeto técnico, não considerados funcionalidades já existentes. A autenticação por sessão HTTP com proteção CSRF está aprovada, mas ainda não foi implementada nem testada.
 
 ## 8. Situação da implementação
 
 - **Regras de negócio:** consolidadas e aprovadas em nível funcional, com casos de borda explicitados.
-- **Código, migrações e testes:** ainda não executados nesta etapa documental.
-- **Arquitetura e roadmap:** documentos iniciais a revisar em etapa posterior para alinhamento com este escopo.
+- **Código, migrações e testes:** backend inicial implementado e validado com teste de carregamento do contexto; migrações e funcionalidades de negócio ainda não implementadas nem testadas.
+- **Arquitetura e roadmap:** consolidados na Fase 0; Fase 1 em andamento, com o primeiro incremento integrado à `main`.

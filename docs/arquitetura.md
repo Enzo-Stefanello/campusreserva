@@ -1,6 +1,6 @@
 # Arquitetura do CampusReserva
 
-> **Status:** arquitetura conceitual alinhada ao MVP acadêmico; **nenhuma implementação ou validação técnica foi executada**.  
+> **Status:** arquitetura conceitual alinhada ao MVP acadêmico; **backend inicial implementado e validado, com o primeiro incremento da Fase 1 integrado à `main`**. As demais funcionalidades permanecem planejadas.
 > **Fontes funcionais:** [requisitos](./requisitos.md) e [RN-01 a RN-20](./regras-de-negocio.md). As regras aprovadas prevalecem sobre exemplos deste documento.
 
 ## 1. Objetivo arquitetural
@@ -175,13 +175,13 @@ Reservas consecutivas e procedimentos de desativação com reservas futuras perm
 
 ## 10. Decisões técnicas e limites pendentes
 
-**Versões e decisões aprovadas (ainda não instaladas ou testadas localmente):**
+**Versões e decisões aprovadas:**
 - Java **25 LTS**, Spring Boot **4.1.2** e dependências Spring gerenciadas pelo Boot.
 - Maven **3.9.x** com Maven Wrapper; PostgreSQL **18.6**; Flyway e módulos PostgreSQL gerenciados pelo Boot.
 - Autenticação por **sessão HTTP com cookie seguro e proteção CSRF**; logout invalida sessão; origem única preferencial.
 
 **Para definir ou verificar antes da implementação correspondente:**
-- Compatibilidade das ferramentas e versões **no ambiente local**; seleção exata de dependências ao gerar o projeto.
+- Compatibilidade das ferramentas, versões e novas dependências **no ambiente local**, antes de incorporá-las nos próximos incrementos.
 - Procedimento concreto de provisionamento seguro do primeiro administrador, política de senha e expiração de sessão.
 - Estrutura definitiva de tabelas/entidades, forma de representar instantes e restrições de banco.
 - Estratégia transacional e de concorrência, validada com testes.
@@ -195,4 +195,4 @@ Reservas consecutivas e procedimentos de desativação com reservas futuras perm
 
 ## 11. Estado atual
 
-A arquitetura descrita é **proposta/documentada, não implementada**. O roadmap define a sequência incremental de construção, com segurança antecipada em relação aos fluxos reserváveis.
+A arquitetura descrita está **documentada, com apenas o backend inicial implementado e validado**. A Fase 0 foi concluída e o primeiro incremento da Fase 1 foi integrado à `main`. O roadmap define a sequência incremental de construção, com segurança antecipada em relação aos fluxos reserváveis.
