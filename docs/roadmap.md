@@ -25,7 +25,10 @@
   - Build e empacotamento executados com sucesso.
   - Teste de carregamento do contexto Spring aprovado (1 teste, 0 falhas).
   - Inicialização do servidor e comunicação HTTP verificadas localmente.
-- [ ] Preparar PostgreSQL local (preferencialmente com Docker Compose) e Flyway.
+- [x] Preparar PostgreSQL local (preferencialmente com Docker Compose) e Flyway.
+  - PostgreSQL 18.6 configurado no Docker Compose e conexão JDBC validada.
+  - Flyway inicializado sem migrações de negócio; a primeira migração fica para o primeiro esquema real.
+  - Três testes aprovados com PostgreSQL temporário via Testcontainers: carregamento do contexto, conexão JDBC e inicialização do Flyway (0 falhas, 0 erros).
 - [ ] Configurar validação de entradas e tratamento padronizado de erros.
 - [ ] Criar endpoint simples de saúde e instruções de execução.
 - [ ] Implementar cadastro e autenticação mínimos com Spring Security por sessões HTTP, logout com invalidação e proteção CSRF.
