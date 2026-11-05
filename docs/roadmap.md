@@ -29,7 +29,11 @@
   - PostgreSQL 18.6 configurado no Docker Compose e conexão JDBC validada.
   - Flyway inicializado sem migrações de negócio; a primeira migração fica para o primeiro esquema real.
   - Três testes aprovados com PostgreSQL temporário via Testcontainers: carregamento do contexto, conexão JDBC e inicialização do Flyway (0 falhas, 0 erros).
-- [ ] Configurar validação de entradas e tratamento padronizado de erros.
+- [x] Configurar validação de entradas e tratamento padronizado de erros.
+  - Jakarta Bean Validation configurado e ProblemDetail nativo habilitado para erros Spring MVC.
+  - Quatro testes MVC aprovados, com controller e DTO exclusivamente de teste.
+  - Sete testes aprovados no total, incluindo os três testes PostgreSQL/Testcontainers (0 falhas, 0 erros).
+  - As validações específicas dos futuros endpoints de negócio ainda serão implementadas.
 - [ ] Criar endpoint simples de saúde e instruções de execução.
 - [ ] Implementar cadastro e autenticação mínimos com Spring Security por sessões HTTP, logout com invalidação e proteção CSRF.
 - [ ] Verificar cookies seguros, integração React/API na mesma origem quando aplicável e tratamento de sessões expiradas.
