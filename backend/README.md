@@ -60,6 +60,8 @@ Para encerrar a aplicação, pressione `Ctrl + C` no terminal.
 
 ## Testes
 
+`ValidationProblemDetailTests` usa `@WebMvcTest` e MockMvc para verificar corpo válido, campo obrigatório inválido, JSON malformado e método HTTP não permitido. Controller e DTO existem somente nos testes. Os erros verificam `application/problem+json` e os campos RFC 9457, usando o tratamento nativo habilitado por `spring.mvc.problemdetails.enabled=true`, sem advice próprio. Essa camada verifica a ausência de DataSource, Flyway e contêineres no contexto e não exige Docker. Para executá-la isoladamente: `.\mvnw.cmd -Dtest=ValidationProblemDetailTests test`.
+
 Os testes com `@SpringBootTest` preservam `contextLoads` e verificam a conexão JDBC com `SELECT 1` e a inicialização do Flyway, incluindo sua tabela técnica de histórico e validação sem migrações de negócio.
 
 Para executar, mantenha o Docker Desktop ativo com contêineres Linux e execute `.\mvnw.cmd clean verify` a partir de `backend/`. São necessários JDK 25 e acesso à internet no primeiro download das dependências e imagens.
