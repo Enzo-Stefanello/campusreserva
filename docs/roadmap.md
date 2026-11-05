@@ -18,9 +18,13 @@
 
 **Entrega da Fase 0:** baseline funcional aprovada, arquitetura conceitual e roadmap documentados, stack escolhida e ferramentas locais verificadas. **Não foram realizados build do Spring Boot, testes da aplicação ou integração Spring Boot ↔ PostgreSQL.** O Maven Wrapper, as dependências do projeto e a autenticação serão implementados na Fase 1.
 
-## Fase 1 — Backend inicial, banco e acesso seguro
+## Fase 1 — Backend inicial, banco e acesso seguro (em andamento)
 
-- [ ] Criar a aplicação Spring Boot com versões verificadas.
+- [x] Criar a aplicação Spring Boot com versões verificadas.
+  - Backend inicializado com Java 25, Spring Boot 4.1.2 e Maven Wrapper 3.9.16.
+  - Build e empacotamento executados com sucesso.
+  - Teste de carregamento do contexto Spring aprovado (1 teste, 0 falhas).
+  - Inicialização do servidor e comunicação HTTP verificadas localmente.
 - [ ] Preparar PostgreSQL local (preferencialmente com Docker Compose) e Flyway.
 - [ ] Configurar validação de entradas e tratamento padronizado de erros.
 - [ ] Criar endpoint simples de saúde e instruções de execução.
